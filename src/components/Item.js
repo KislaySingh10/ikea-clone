@@ -16,16 +16,16 @@ function Item(props) {
     const change3=(e)=>{
         setimage(props.data.image3)
     }
-    const dispatch = useDispatch()
-    const addCartHandler=()=>{
-        dispatch(addToCart(props.data.id,image))
-    }
     const mover=(e)=>{
         setmain(image)
         setimage(props.data.image4)
     }
     const mout=(e)=>{
         setimage(mainimg)
+    }
+    const dispatch = useDispatch()
+    const addCartHandler=()=>{
+        dispatch(addToCart(props.data.id,image))
     }
     return (
         <div className="card" >

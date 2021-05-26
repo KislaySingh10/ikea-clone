@@ -5,11 +5,12 @@ const cartReducer=(state=initialState,action)=>{
     switch(action.type){
         case ADD_CART_SUCCESS:
             const item=action.payload;
-            const existing=state.cartItems.find((x) => x.id === item.id);
-            if(existing && existing.image1===item.image1){
+            const existing=state.cartItems.find((x) => (x.id === item.id) && (x.image1 === item.image1));
+            if(existing){
+                console.log(existing)
                 return{
                     ...state,
-                    cartItems:state.cartItems.map((x) => x.product===existing.product?{...item,qty:existing.qty+1}:x)
+                    cartItems:state.cartItems.map((x) => ((x.id===existing.id) && (x.image1===existing.image1))?{...item,qty:existing.qty+1}:x)
                 };
             } else {
                 return{
